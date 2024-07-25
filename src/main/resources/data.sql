@@ -29,3 +29,5 @@ CREATE TABLE app.user
     birth_date DATE,
     age INT
 );
+
+SELECT * FROM app.user;
