@@ -1,7 +1,11 @@
 package by.hibernate.starter.entity;
 
+import by.hibernate.starter.converter.BirthdayConverter;
 import jakarta.persistence.Column;
+import jakarta.persistence.Convert;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
@@ -22,7 +26,9 @@ public class User {
     private String username;
     private String firstname;
     private String lastname;
+    @Convert(converter = BirthdayConverter.class)
     @Column(name = "birth_date")
-    private LocalDate birthDate;
-    private Integer age;
+    private Birthday birthDate;
+    @Enumerated(EnumType.STRING)
+    private Role role;
 }

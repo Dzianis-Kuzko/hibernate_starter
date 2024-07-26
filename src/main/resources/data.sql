@@ -27,7 +27,9 @@ CREATE TABLE app.user
     firstname VARCHAR(128),
     lastname VARCHAR(128) ,
     birth_date DATE,
-    age INT
+    role VARCHAR(32)
 );
+
+DROP TABLE app.user;
 
 SELECT * FROM app.user;

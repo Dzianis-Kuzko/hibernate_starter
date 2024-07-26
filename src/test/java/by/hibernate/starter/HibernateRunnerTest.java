@@ -10,7 +10,6 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -23,8 +22,6 @@ class HibernateRunnerTest {
                 .username("KDA1")
                 .firstname("Kuzko")
                 .lastname("Denis")
-                .birthDate(LocalDate.of(2000, 10, 11))
-                .age(24)
                 .build();
         String sql = """
                 insert into
