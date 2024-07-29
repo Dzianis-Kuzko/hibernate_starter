@@ -1,35 +1,45 @@
 package by.hibernate.starter;
 
 import by.hibernate.starter.entity.Birthday;
+import by.hibernate.starter.entity.PersonalInfo;
 import by.hibernate.starter.entity.Role;
 import by.hibernate.starter.entity.User;
+import by.hibernate.starter.util.HibernateUtil;
+import lombok.extern.slf4j.Slf4j;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.cfg.Configuration;
 
 import java.time.LocalDate;
 
-
+@Slf4j
 public class HibernateRunner {
-    public static void main(String[] args) {
-        Configuration configuration = new Configuration();
-        configuration.configure();
+    // можно использовать annotation @Slf4j
+    //private static final Logger log = LoggerFactory.getLogger(HibernateRunner.class);
 
-        try (SessionFactory sessionFactory = configuration.buildSessionFactory();
+    public static void main(String[] args) {
+
+        User user = User.builder()
+                .username("KDA2")
+                .personalInfo(PersonalInfo.builder()
+                        .firstname("Kuzko")
+                        .lastname("Denis")
+                        .birthDate(new Birthday(LocalDate.of(2000, 10, 11))).
+                        build())
+                .role(Role.ADMIN)
+                .build();
+
+        log.info("User object in transient state: {} ", user);
+
+        try (SessionFactory sessionFactory = HibernateUtil.buildSessionFactory();
              Session session = sessionFactory.openSession();) {
             session.beginTransaction();
 
-            User user = User.builder()
-                    .username("KDA2")
-                    .firstname("Kuzko")
-                    .lastname("Denis")
-                    .birthDate(new Birthday(LocalDate.of(2000, 10, 11)))
-                    .role(Role.ADMIN)
-                    .build();
-
             session.save(user);
 
+
             session.getTransaction().commit();
+        } catch (Exception e) {
+            log.error("Exception ", e);
         }
 
     }
