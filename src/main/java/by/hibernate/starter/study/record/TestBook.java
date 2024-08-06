@@ -1,4 +1,4 @@
-package by.hibernate.starter.record;
+package by.hibernate.starter.study.record;
 
 
 import java.lang.reflect.Field;

@@ -1,4 +1,4 @@
-package by.hibernate.starter.annotation.taskxml;
+package by.hibernate.starter.study.annotation.taskxml;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

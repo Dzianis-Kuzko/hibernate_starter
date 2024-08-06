@@ -5,9 +5,11 @@ import by.hibernate.starter.entity.PersonalInfo;
 import by.hibernate.starter.entity.Role;
 import by.hibernate.starter.entity.User;
 import by.hibernate.starter.util.HibernateUtil;
+import jakarta.persistence.EntityManagerFactory;
 import lombok.extern.slf4j.Slf4j;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.engine.spi.SessionFactoryDelegatingImpl;
 
 import java.time.LocalDate;
 
